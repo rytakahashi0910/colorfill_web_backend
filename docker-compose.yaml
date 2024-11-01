@@ -1,0 +1,65 @@
+services:
+  colorfill-backend:
+    # 生成するイメージ名
+    image: springboot-jdk21-app
+    # 生成するコンテナ名
+    container_name: colorfill-backend
+    #
+    build: 
+      context: .
+      dockerfile: ./docker/java/Dockerfile
+    hostname: localhost
+    #
+    ports:
+      - "8000:80"
+      - "5050:50"
+    volumes:
+      - ./:/app
+    # 環境変数の設定
+    environment:
+      TZ: Asia/Tokyo
+    # command: /sbin/init 
+    networks:
+      - colorfillnetwork
+
+  nginx:
+    image: nginx:latest
+    container_name: colorfill-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - colorfill-backend
+    networks:
+      - colorfillnetwork
+
+  colorfill-db:
+    # 生成するイメージ名
+    image: mysql:8.0
+    # 生成するコンテナ名
+    container_name: colorfill-db
+    hostname: localhost
+    # build: ./dockerfile/dev-otc-db/
+    ports:
+      - "2206:22"
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: colorfill
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: colorfill
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/mysql/data:/var/lib/mysql
+    privileged: true
+    # command: /sbin/init 
+    networks:
+      - colorfillnetwork
+
+networks:
+  colorfillnetwork:
+    driver: bridge
+#     ipam:
+#       driver: default
