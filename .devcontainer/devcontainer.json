@@ -19,8 +19,8 @@
             "shengchen.vscode-checkstyle",// Checkstyle for Java(linter：ソースコードを静的に解析して、コード内のエラーや潜在的なバグ、スタイルの不一致などを指摘するツール、の拡張機能)
         ],
         "settings": {
-            "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home",
-            "java.jdt.ls.java.home": "",
+            "java.jdt.ls.java.home": "/usr/lib/jvm/msopenjdk-21",
+            "maven.home": "/usr/bin/mvn",
             "java.checkstyle.configuration": "google_checks.xml",// linterの設定ファイルを指定
             "java.checkstyle.autocheck": true,
             "java.format.settings.url": "java-google-style.xml",// formatterの設定ファイルを指定

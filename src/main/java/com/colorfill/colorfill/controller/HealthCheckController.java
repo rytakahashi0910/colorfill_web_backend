@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HealthCheckController {
-    @RequestMapping("/")  // ルートへこのメソッドをマップする
+    @RequestMapping("/") // ルートへこのメソッドをマップする
     public String test() {
         return "Hello Wakuto";
     }

@@ -11,8 +11,7 @@ services:
     hostname: localhost
     #
     ports:
-      - "8000:80"
-      - "5050:50"
+      - "8080:80"
     volumes:
       - ./:/app
     # 環境変数の設定

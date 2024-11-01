@@ -8,10 +8,6 @@ public class ColorfillApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ColorfillApplication.class, args);
-		if (true == true) {
-				String sss = "あああ";
-		}
-
 	}
 
 }
