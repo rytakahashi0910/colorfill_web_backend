@@ -11,6 +11,7 @@
     // カスタマイズ
     "vscode": {
         // devcontainer内で利用する拡張機能一覧(以下の拡張機能は、devcontainer内でデフォルトで使える。各自個別に拡張機能を入れることも可能)
+        // TODO：不要な拡張機能の削除（特に、Extension Packの使ってなさそうなやつ）
         "extensions": [
             "ms-azuretools.vscode-docker",// docker
             "vscjava.vscode-java-pack",// Extension Pack for Java
