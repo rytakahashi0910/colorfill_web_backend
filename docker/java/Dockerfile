@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu AS build
 # 作業ディレクトリの設定
 WORKDIR /app
 
-# pom.xmlとMavenラッパーをコピー
+# pom.xmlをコピー
 COPY ./pom.xml ./
 
 # Mavenのインストール
@@ -21,7 +21,7 @@ COPY ./src ./src
 # アプリケーションをビルド
 RUN mvn clean package -e
 
-# 実行用のイメージ（ベースイメージと同じイメージです）
+# # 実行用のイメージ（ベースイメージと同じイメージです）
 FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
 
 # Maven、gitのインストール
